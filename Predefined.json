@@ -4,7 +4,8 @@
       "name": "Instagram",
       "ipAddresses": [
         {
-          "ipAddress": "gateway.instagram.com"
+          "ipAddress": "gateway.instagram.com",
+          "port": 443
         }
       ]
     },
@@ -12,7 +13,8 @@
       "name": "Telegram",
       "ipAddresses": [
         {
-          "ipAddress": "t.me"
+          "ipAddress": "t.me",
+          "port": 443
         }
       ]
     },
@@ -20,7 +22,8 @@
       "name": "Twitter",
       "ipAddresses": [
         {
-          "ipAddress": "api.twitter.com"
+          "ipAddress": "api.twitter.com",
+          "port": 443
         }
       ]
     }
