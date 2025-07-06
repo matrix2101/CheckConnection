@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing2">8dp</dimen>
+    <dimen name="fab_margin">12dp</dimen>
+    <dimen name="fab_margin2">52dp</dimen>
+    <dimen name="fragmentWidth">200dp</dimen>
+    <dimen name="iconSize">25dp</dimen>
+    <dimen name="textviewPadding">1dp</dimen>
+    <dimen name="edittextPadding">18dp</dimen>
+    <dimen name="edittextPadding2">22dp</dimen>
+    <dimen name="spinnerPadding">14dp</dimen>
+    <dimen name="nav_header_height">180dp</dimen>
+    <dimen name="editTextHeight">52dp</dimen>
+    <dimen name="buttonHeight">40dp</dimen>
+    <dimen name="splashLogoElectricity">75dp</dimen>
+    <dimen name="splashCompanyName">20sp</dimen>
+    <dimen name="textButtons">12sp</dimen>
+    <dimen name="editTextSize">12sp</dimen>
+    <dimen name="editTextSize2">14sp</dimen>
+    <dimen name="toolbarTitleSize">14sp</dimen>
+    <dimen name="toolbarArrowSize">16dp</dimen>
+
+    <dimen name="titleText">17sp</dimen>
+    <dimen name="firstTitleText">24sp</dimen>
+    <dimen name="secendTitleText">21sp</dimen>
+    <dimen name="thirdTitleText">18sp</dimen>
+
+    <dimen name="firstText">15sp</dimen>
+    <dimen name="secendText">14sp</dimen>
+    <dimen name="thirdText">13sp</dimen>
+    <dimen name="fourthText">12sp</dimen>
+    <dimen name="fifthText">11sp</dimen>
+    <dimen name="sixthText">10sp</dimen>
+    <dimen name="seventhText">9sp</dimen>
+    <dimen name="eighthText">8sp</dimen>
+
+    <dimen name="agreementTextHeight">250dp</dimen>
+    <dimen name="helpTextHeight">100dp</dimen>
+    <dimen name="toolbarHeight">94dp</dimen>
+    <dimen name="iconSize1">6dp</dimen>
+    <dimen name="iconSize2">10dp</dimen>
+    <dimen name="iconSize3">14dp</dimen>
+    <dimen name="iconSize4">18dp</dimen>
+    <dimen name="iconSize5">22dp</dimen>
+    <dimen name="iconSize6">26dp</dimen>
+    <dimen name="iconSize7">34dp</dimen>
+    <dimen name="iconSize8">42dp</dimen>
+    <dimen name="iconSize9">50dp</dimen>
+    <dimen name="iconSize10">58dp</dimen>
+    <dimen name="iconSize11">66dp</dimen>
+    <dimen name="iconSize12">74dp</dimen>
+    <dimen name="iconSize13">82dp</dimen>
+    <dimen name="iconSize14">90dp</dimen>
+    <dimen name="cardImageSize1">48dp</dimen>
+    <dimen name="takePhotoImageHeight">150dp</dimen>
+    <dimen name="meterDetailImageHeight">150dp</dimen>
+    <dimen name="addAndRemoveNumberHeight">24dp</dimen>
+    <dimen name="energyPackageGauge">150dp</dimen>
+
+    <dimen name="addBillButton">60dp</dimen>
+    <dimen name="navigationHeight">56dp</dimen>
+    <dimen name="iconRegisterId">40dp</dimen>
+    <dimen name="sliderIndicatorSize">1dp</dimen>
+    <dimen name="loaderSize">112dp</dimen>
+
+    <dimen name="paddingTabWidth">8dp</dimen>
+    <dimen name="paddingTabHeight">6dp</dimen>
+
+</resources>

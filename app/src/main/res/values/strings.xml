@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">تست اتصال</string>
+    <string name="ip">آی پی</string>
+    <string name="addressOrIp">آدرس \n یا IP</string>
+    <string name="port">پورت</string>
+    <string name="defaultPort">443</string>
+    <string name="ipTest">تست آی پی</string>
+    <string name="start">شروع تست گرفتن</string>
+    <string name="stop">پایان تست گرفتن</string>
+    <string name="delay">وقفه بین \n هر تست</string>
+</resources>
