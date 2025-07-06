@@ -1,0 +1,28 @@
+{
+  "apps": [
+    {
+      "name": "Instagram",
+      "ipAddresses": [
+        {
+          "ipAddress": "gateway.instagram.com"
+        }
+      ]
+    },
+    {
+      "name": "Telegram",
+      "ipAddresses": [
+        {
+          "ipAddress": "t.me"
+        }
+      ]
+    },
+    {
+      "name": "twitter",
+      "ipAddresses": [
+        {
+          "ipAddress": "api.twitter.com"
+        }
+      ]
+    }
+  ]
+}
