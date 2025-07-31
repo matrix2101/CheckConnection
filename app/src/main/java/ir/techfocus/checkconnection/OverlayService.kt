@@ -98,7 +98,7 @@ class OverlayService : Service() {
 
         overlayParams2.gravity = Gravity.TOP or Gravity.START
         overlayParams2.x = 50
-        overlayParams2.y = 250
+        overlayParams2.y = 225
 
         cardView2.setOnTouchListener(initOnTouchListener(overlayParams2, cardView2))
 
@@ -123,7 +123,7 @@ class OverlayService : Service() {
 
         overlayParams3.gravity = Gravity.TOP or Gravity.START
         overlayParams3.x = 50
-        overlayParams3.y = 400
+        overlayParams3.y = 350
 
         cardView3.setOnTouchListener(initOnTouchListener(overlayParams3, cardView3))
 
@@ -143,7 +143,7 @@ class OverlayService : Service() {
             if (intent.action == CONNECTIVITY_UPDATE) {
                 val addressTestArray = intent.getSerializableExtra(ADDRESS_TEST_KEY) as Array<AddressTest>
 
-                if (addressTestArray[0].shouldBeTested == true){
+                if (addressTestArray[0].shouldBeTested == true) {
                     cardView1.isVisible = true
                     imageView1.setImageResource(
                         if (addressTestArray[0].reachable) R.drawable.icon_check else R.drawable.icon_cross
@@ -152,7 +152,7 @@ class OverlayService : Service() {
                     cardView1.isVisible = false
                 }
 
-                if (addressTestArray[1].shouldBeTested == true){
+                if (addressTestArray[1].shouldBeTested == true) {
                     cardView2.isVisible = true
                     imageView2.setImageResource(
                         if (addressTestArray[1].reachable) R.drawable.icon_check else R.drawable.icon_cross
@@ -161,7 +161,7 @@ class OverlayService : Service() {
                     cardView2.isVisible = false
                 }
 
-                if (addressTestArray[2].shouldBeTested == true){
+                if (addressTestArray[2].shouldBeTested == true) {
                     cardView3.isVisible = true
                     imageView3.setImageResource(
                         if (addressTestArray[2].reachable) R.drawable.icon_check else R.drawable.icon_cross
@@ -276,7 +276,7 @@ class OverlayService : Service() {
 
     //==============================================================================================
 
-    fun initTextView ():TextView{
+    fun initTextView(): TextView {
         return TextView(this).apply {
             text = "IP"
             setTextColor(Color.BLACK)

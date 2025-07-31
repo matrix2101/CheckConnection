@@ -6,16 +6,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ApiClient {
     companion object {
         const val BASE_URL: String = "https://raw.githubusercontent.com/"
-        var retrofit: Retrofit? = null
 
-        fun getClient(): Retrofit? {
-            if (retrofit == null) {
-                retrofit = Retrofit.Builder()
-                    .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build()
-            }
-            return retrofit
-        }
+        val retrofit = Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val apiInterface = retrofit.create(APIInterface::class.java)
     }
 }

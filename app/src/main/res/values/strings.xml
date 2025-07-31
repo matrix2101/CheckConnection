@@ -8,4 +8,6 @@
     <string name="start">شروع تست گرفتن</string>
     <string name="stop">پایان تست گرفتن</string>
     <string name="delay">وقفه بین \n هر تست</string>
+    <string name="jsonDownloadFailed">اطلاعات از قبل تعریف شده، از اینترنت گرفته نشد. آیا دوباره تلاش می کنید؟</string>
+    <string name="tryAgain">تلاش دوباره</string>
 </resources>

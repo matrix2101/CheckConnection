@@ -2,11 +2,10 @@ package ir.techfocus.checkconnection
 
 import com.google.gson.annotations.SerializedName
 
-
-data class Predefined(
+data class Item(
     @SerializedName("name")
-    val name: String,
+    var name: String,
 
     @SerializedName("ipAddresses")
-    val ipAddresses: List<String>
+    var ipAddresses: List<IPAddress>
 )
