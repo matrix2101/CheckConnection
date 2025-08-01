@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -123,7 +124,6 @@
                 android:layout_marginEnd="8dp"
                 android:hint="@string/ip"
                 android:inputType="text"
-                android:text="gateway.instagram.com"
                 app:layout_constraintBottom_toBottomOf="@+id/txtIP1"
                 app:layout_constraintEnd_toStartOf="@+id/textNumber1"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -152,7 +152,6 @@
                 android:hint="@string/defaultPort"
                 android:inputType="numberDecimal"
                 android:singleLine="true"
-                android:text="443"
                 app:layout_constraintBottom_toBottomOf="@+id/txtPort1"
                 app:layout_constraintEnd_toStartOf="@+id/txtPort1"
                 app:layout_constraintStart_toStartOf="parent"
@@ -231,7 +230,6 @@
                 android:layout_marginEnd="8dp"
                 android:hint="@string/ip"
                 android:inputType="text"
-                android:text="t.me"
                 app:layout_constraintBottom_toBottomOf="@+id/txtIP2"
                 app:layout_constraintEnd_toStartOf="@+id/textNumber2"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -260,7 +258,6 @@
                 android:hint="@string/defaultPort"
                 android:inputType="numberDecimal"
                 android:singleLine="true"
-                android:text="443"
                 app:layout_constraintBottom_toBottomOf="@+id/txtPort2"
                 app:layout_constraintEnd_toStartOf="@+id/txtPort2"
                 app:layout_constraintStart_toStartOf="parent"
@@ -339,7 +336,6 @@
                 android:layout_marginEnd="8dp"
                 android:hint="@string/ip"
                 android:inputType="text"
-                android:text="api.twitter.com"
                 app:layout_constraintBottom_toBottomOf="@+id/txtIP3"
                 app:layout_constraintEnd_toStartOf="@+id/textNumber3"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -368,7 +364,6 @@
                 android:hint="@string/defaultPort"
                 android:inputType="numberDecimal"
                 android:singleLine="true"
-                android:text="443"
                 app:layout_constraintBottom_toBottomOf="@+id/txtPort3"
                 app:layout_constraintEnd_toStartOf="@+id/txtPort3"
                 app:layout_constraintStart_toStartOf="parent"
@@ -440,6 +435,18 @@
                 app:layout_constraintEnd_toStartOf="@+id/guideline"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/btnStart" />
+
+            <Button
+                android:id="@+id/btnManage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/manageAddresses"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnStart" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline"
