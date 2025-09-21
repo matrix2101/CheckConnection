@@ -4,9 +4,9 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "IPAddressesLast")
+@Entity(tableName = "IPAddressLast")
 data class IPAddressLast(
     @PrimaryKey val name: String,
     @ColumnInfo val ipAddress: String?,
-    @ColumnInfo val port: Int?
+    @ColumnInfo val port: String?
 )

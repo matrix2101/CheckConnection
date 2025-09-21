@@ -12,17 +12,18 @@
     <application
         android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
+        android:forceDarkAllowed="false"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="false"
-        android:theme="@style/Theme.CheckConnection"
+        android:theme="@style/AppThemeLightStyle"
         tools:targetApi="31">
 
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashActivity"
             android:exported="true"
-            android:theme="@style/Theme.CheckConnection">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,16 +31,20 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
         <service
             android:name=".ConnectivityMonitorService"
             android:exported="false"
-            android:foregroundServiceType="connectedDevice" />
+            android:foregroundServiceType="shortService" />
 
         <service
             android:name=".OverlayService"
             android:exported="false"
-            android:foregroundServiceType="connectedDevice" />
-
+            android:foregroundServiceType="shortService" />
     </application>
 
 </manifest>

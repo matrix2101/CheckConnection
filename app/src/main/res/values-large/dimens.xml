@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="nav_header_vertical_spacing">32dp</dimen>
-    <dimen name="nav_header_vertical_spacing2">24dp</dimen>
     <dimen name="fab_margin">12dp</dimen>
     <dimen name="fab_margin2">68dp</dimen>
     <dimen name="fragmentWidth">400dp</dimen>
@@ -14,21 +12,23 @@
     <dimen name="nav_header_height">190dp</dimen>
     <dimen name="editTextHeight">68dp</dimen>
     <dimen name="buttonHeight">56dp</dimen>
-    <dimen name="splashLogoElectricity">140dp</dimen>
+    <dimen name="splashLogo">140dp</dimen>
     <dimen name="splashCompanyName">28sp</dimen>
     <dimen name="textButtons">18sp</dimen>
     <dimen name="editTextSize">16sp</dimen>
+    <dimen name="editTextSize1">17sp</dimen>
     <dimen name="editTextSize2">18sp</dimen>
+    <dimen name="editTextSize3">19sp</dimen>
     <dimen name="toolbarTitleSize">20sp</dimen>
     <dimen name="toolbarArrowSize">32dp</dimen>
 
     <dimen name="titleText">27sp</dimen>
     <dimen name="firstTitleText">30sp</dimen>
-    <dimen name="secendTitleText">27sp</dimen>
+    <dimen name="secondTitleText">27sp</dimen>
     <dimen name="thirdTitleText">24sp</dimen>
 
     <dimen name="firstText">21sp</dimen>
-    <dimen name="secendText">20sp</dimen>
+    <dimen name="secondText">20sp</dimen>
     <dimen name="thirdText">19sp</dimen>
     <dimen name="fourthText">18sp</dimen>
     <dimen name="fifthText">17sp</dimen>
@@ -55,13 +55,10 @@
     <dimen name="iconSize14">102dp</dimen>
     <dimen name="cardImageSize1">64dp</dimen>
     <dimen name="takePhotoImageHeight">300dp</dimen>
-    <dimen name="meterDetailImageHeight">300dp</dimen>
     <dimen name="addAndRemoveNumberHeight">40dp</dimen>
-    <dimen name="energyPackageGauge">300dp</dimen>
 
-    <dimen name="addBillButton">108dp</dimen>
     <dimen name="navigationHeight">88dp</dimen>
-    <dimen name="iconRegisterId">72dp</dimen>
+    <dimen name="startStopButtonHeight">76dp</dimen>
     <dimen name="sliderIndicatorSize">2dp</dimen>
     <dimen name="loaderSize">144dp</dimen>
 

@@ -24,8 +24,6 @@ import androidx.cardview.widget.CardView
 import androidx.core.graphics.toColorInt
 import androidx.core.view.isVisible
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import ir.techfocus.checkconnection.MainActivity.Companion.ADDRESS_TEST_KEY
-import ir.techfocus.checkconnection.MainActivity.Companion.CONNECTIVITY_UPDATE
 
 class OverlayService : Service() {
     private lateinit var windowManager: WindowManager
@@ -53,7 +51,7 @@ class OverlayService : Service() {
 
         localBroadcastManager = LocalBroadcastManager.getInstance(this)
 
-        val filter = IntentFilter(CONNECTIVITY_UPDATE)
+        val filter = IntentFilter(Constants.CONNECTIVITY_UPDATE)
         localBroadcastManager.registerReceiver(receiver, filter)
 
         windowManager = getSystemService(WINDOW_SERVICE) as WindowManager
@@ -76,6 +74,7 @@ class OverlayService : Service() {
         overlayParams1.y = 100
 
         cardView1.setOnTouchListener(initOnTouchListener(overlayParams1, cardView1))
+        cardView1.setCardBackgroundColor(resources.getColor(R.color.IP1BackgroundColor, null))
 
         linearLayout1.addView(textView1)
         linearLayout1.addView(imageView1)
@@ -101,6 +100,7 @@ class OverlayService : Service() {
         overlayParams2.y = 225
 
         cardView2.setOnTouchListener(initOnTouchListener(overlayParams2, cardView2))
+        cardView2.setCardBackgroundColor(resources.getColor(R.color.IP2BackgroundColor, null))
 
         linearLayout2.addView(textView2)
         linearLayout2.addView(imageView2)
@@ -126,6 +126,7 @@ class OverlayService : Service() {
         overlayParams3.y = 350
 
         cardView3.setOnTouchListener(initOnTouchListener(overlayParams3, cardView3))
+        cardView3.setCardBackgroundColor(resources.getColor(R.color.IP3BackgroundColor, null))
 
         linearLayout3.addView(textView3)
         linearLayout3.addView(imageView3)
@@ -140,8 +141,8 @@ class OverlayService : Service() {
 
     private val receiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
-            if (intent.action == CONNECTIVITY_UPDATE) {
-                val addressTestArray = intent.getSerializableExtra(ADDRESS_TEST_KEY) as Array<AddressTest>
+            if (intent.action == Constants.CONNECTIVITY_UPDATE) {
+                val addressTestArray = intent.getSerializableExtra(Constants.ADDRESS_TEST_KEY) as Array<AddressTest>
 
                 if (addressTestArray[0].shouldBeTested == true) {
                     cardView1.isVisible = true

@@ -1,11 +1,9 @@
 package ir.techfocus.checkconnection
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import androidx.room.Update
 
 @Dao
 interface IPAddressDao {
@@ -18,17 +16,11 @@ interface IPAddressDao {
     @Query("SELECT MAX(name) FROM IPAddressLocal")
     suspend fun getGreatestIdNameLocal(): Int
 
+    @Query("DELETE FROM IPAddressLocal WHERE name = (:name)")
+    suspend fun deleteIPAddressLocalByName(name: String)
+
     @Insert(entity = IPAddressLocal::class, OnConflictStrategy.REPLACE)
     suspend fun insertIPAddressLocal(ipAddress: IPAddressLocal)
-
-    @Delete(entity = IPAddressLocal::class)
-    suspend fun deleteIPAddressLocal(ipAddress: IPAddressLocal)
-
-    @Delete(entity = IPAddressLocal::class)
-    suspend fun deleteIPAddressLocal(ipAddresses: List<IPAddressLocal>)
-
-    @Update(entity = IPAddressLocal::class)
-    suspend fun updateUsersLocal(vararg ipAddress: IPAddressLocal)
 
     //====================================================
 
@@ -44,9 +36,14 @@ interface IPAddressDao {
     @Insert(entity = IPAddressRemote::class, OnConflictStrategy.REPLACE)
     suspend fun insertIPAddressRemote(ipAddress: IPAddressRemote)
 
-    @Delete(entity = IPAddressRemote::class)
-    suspend fun deleteIPAddressRemote(ipAddress: IPAddressRemote)
+    //====================================================
 
-    @Update(entity = IPAddressRemote::class)
-    suspend fun updateUsersRemote(ipAddress: IPAddressRemote)
+    @Query("SELECT * FROM IPAddressLast WHERE name = (:name)")
+    suspend fun getIPAddressLastByName(name: String): IPAddressLast?
+
+    @Insert(entity = IPAddressLast::class, OnConflictStrategy.REPLACE)
+    suspend fun insertIPAddressLast(ipAddress: IPAddressLast)
+
+    @Query("DELETE FROM IPAddressLast")
+    suspend fun deleteAllIPAddressLast()
 }

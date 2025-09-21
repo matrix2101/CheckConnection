@@ -3,6 +3,6 @@ package ir.techfocus.checkconnection
 import retrofit2.http.GET
 
 interface APIInterface {
-    @GET("matrix210/CheckConnection/refs/heads/main/Predefined.json")
-    suspend fun getPredefined(): Items
+    @GET("matrix2101/CheckConnection/refs/heads/main/predefined.json")
+    suspend fun getPredefined(): Items?
 }
