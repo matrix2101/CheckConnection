@@ -30,5 +30,30 @@ class Constants {
 
         const val DEFAULT_DELAY: Long = 1200
         const val DEFAULT_TIMEOUT: Int = 1000
+
+        const val LANGUAGE_FA: String = "fa"
+        const val LANGUAGE_EN: String = "en"
+        const val LANGUAGE_DEFAULT: String = "fa"
+
+        const val LANGUAGE: String = "language"
+
+        const val OVERLAY_X_KEY: String = "overlayX"
+        const val OVERLAY_Y_KEY: String = "overlayY"
+
+        const val OVERLAY_KEY: String = "overlay"
+        const val OVERLAY_TOP_LEFT_KEY: String = "topLeft"
+        const val OVERLAY_TOP_RIGHT_KEY: String = "topRight"
+        const val OVERLAY_BOTTOM_LEFT_KEY: String = "bottomLeft"
+        const val OVERLAY_BOTTOM_RIGHT_KEY: String = "bottomRight"
+        const val OVERLAY_DEFAULT: String = "topLeft"
+
+        const val OVERLAY_PERCENTAGE_X_START: Int = 10
+        const val OVERLAY_PERCENTAGE_X_END: Int = 83
+        const val OVERLAY_PERCENTAGE_Y_START: Int = 5
+        const val OVERLAY_PERCENTAGE_Y_END: Int = 83
+
+        const val OVERLAY_UPDATE: String = "ir.techfocus.OVERLAY_UPDATE"
+
+
     }
 }

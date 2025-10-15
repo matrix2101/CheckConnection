@@ -13,15 +13,17 @@ import android.os.Bundle
 import android.provider.Settings
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.content.res.ResourcesCompat
-import androidx.core.net.toUri
+import androidx.core.view.GravityCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.lifecycleScope
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.github.mikephil.charting.animation.Easing
@@ -40,11 +42,12 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val context: Context = this
     private val activity: Activity = this
+    private lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
     private lateinit var db: AppDatabase
     private var permissionHelper: PermissionHelper? = null
     private var startFlag: Boolean = true
@@ -54,6 +57,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         db = Utils().getInstanceDB(context)
+
+        initNavigationDrawer()
 
         lifecycleScope.launch {
             initButtons()
@@ -124,18 +129,26 @@ class MainActivity : AppCompatActivity() {
     //==============================================================================================
 
     suspend fun initLocalSpinners() {
-        val items = db.dao().getAllIPAddressesLocal()
+        var items: MutableList<IPAddressLocal>? = db.dao().getAllIPAddressesLocal()
+        var tempItems: MutableList<IPAddressLocal> = mutableListOf()
 
         binding.spnIP1.closeDropdown()
         binding.spnIP2.closeDropdown()
         binding.spnIP3.closeDropdown()
 
         if (items != null) {
-            var items = items.reversed()
+            if (items.size != 0) {
+                tempItems.addAll(items.reversed())
 
-            val adapter = IPAddressLocalAdapter(context, items) { clickedItem ->
+            } else {
+                val noAddress = IPAddressLocal(resources.getString(R.string.noAddress), "", Constants.DEFAULT_PORT)
+                tempItems.add(noAddress)
+            }
+
+
+            val adapter = IPAddressLocalAdapter(context, tempItems) { imageClickedItem ->
                 lifecycleScope.launch {
-                    db.dao().deleteIPAddressLocalByName(clickedItem.name)
+                    db.dao().deleteIPAddressLocalByName(imageClickedItem.name)
                     initLocalSpinners()
                 }
             }
@@ -599,6 +612,99 @@ class MainActivity : AppCompatActivity() {
 
     fun showMessage(text: String) {
         Toast.makeText(context, text, Toast.LENGTH_LONG).show()
+    }
+
+    //==============================================================================================
+
+    override fun onBackPressed() {
+        if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }
+    }
+
+    //==============================================================================================
+
+    fun initNavigationDrawer() {
+        actionBarDrawerToggle = ActionBarDrawerToggle(this, binding.drawerLayout, R.string.navOpen, R.string.navClose)
+
+        if (Utils().getSystemLanguage(context) == Constants.LANGUAGE_EN) {
+            actionBarDrawerToggle.setHomeAsUpIndicator(R.drawable.ic_menu_en)
+
+        } else if (Utils().getSystemLanguage(context) == Constants.LANGUAGE_FA) {
+            actionBarDrawerToggle.setHomeAsUpIndicator(R.drawable.ic_menu)
+        }
+
+        binding.drawerLayout.addDrawerListener(actionBarDrawerToggle)
+        actionBarDrawerToggle.syncState()
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.navView) { view, insets ->
+            val sysInsets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.setPadding(0, sysInsets.top, 0, 0)
+            insets
+        }
+
+        binding.imgMenu.setOnClickListener {
+            if (Utils().getSystemLanguage(context) == Constants.LANGUAGE_EN) {
+                if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+
+                } else {
+                    binding.drawerLayout.openDrawer(GravityCompat.START)
+                }
+
+            } else if (Utils().getSystemLanguage(context) == Constants.LANGUAGE_FA) {
+                if (binding.drawerLayout.isDrawerOpen(GravityCompat.END)) {
+                    binding.drawerLayout.closeDrawer(GravityCompat.END)
+
+                } else {
+                    binding.drawerLayout.openDrawer(GravityCompat.END)
+                }
+            }
+        }
+
+        binding.navView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.tutorial -> {
+
+                }
+
+                R.id.settings -> {
+                    val fragment = SettingsFragment(context)
+                    val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+                    transaction.replace(R.id.drawerLayout, fragment)
+                    transaction.addToBackStack(null)
+                    transaction.commit()
+                }
+            }
+            if (Utils().getSystemLanguage(context) == Constants.LANGUAGE_EN) {
+                binding.drawerLayout.closeDrawer(GravityCompat.START)
+
+            } else if (Utils().getSystemLanguage(context) == Constants.LANGUAGE_FA) {
+                binding.drawerLayout.closeDrawer(GravityCompat.END)
+            }
+            true
+        }
+    }
+
+    //==============================================================================================
+
+    fun changeLocale(context: Context, language: String) {
+        Utils().saveSettings(context, Constants.LANGUAGE,language)
+        Utils().setLocale(context, language)
+        restartApp(context)
+    }
+
+    fun restartApp(context: Context) {
+        val intent = Intent(context, MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        context.startActivity(intent)
+        if (context is Activity) {
+            context.finish()
+        }
     }
 }
 

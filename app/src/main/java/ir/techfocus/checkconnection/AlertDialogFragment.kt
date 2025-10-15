@@ -38,9 +38,6 @@ class AlertDialogFragment(private val myContext: Context, private val alertType:
 
     //==========================================================================================================================
 
-
-    //==========================================================================================================================
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }

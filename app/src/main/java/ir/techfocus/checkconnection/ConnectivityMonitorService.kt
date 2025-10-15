@@ -21,7 +21,6 @@ import okhttp3.Request
 import java.io.IOException
 import java.net.InetSocketAddress
 import java.net.Socket
-import java.net.URL
 import java.util.concurrent.TimeUnit
 
 
@@ -37,13 +36,11 @@ class ConnectivityMonitorService : Service() {
     private var timeOut: Int = Constants.DEFAULT_TIMEOUT
     private var notifText: String = ""
 
-
     override fun onCreate() {
         super.onCreate()
         createNotificationChannel()
         startForeground(Constants.NOTIFICATION_ID, buildNotification(resources.getString(R.string.testing)))
     }
-
 
     override fun onDestroy() {
         super.onDestroy()

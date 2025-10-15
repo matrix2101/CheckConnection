@@ -1,33 +1,52 @@
 <resources>
-    <string name="app_name">تست اتصال</string>
-    <string name="ip">آی پی</string>
-    <string name="addressOrIp">آدرس یا آی پی:</string>
-    <string name="addressOrIp1">آدرس یا آی پی 1</string>
-    <string name="addressOrIp2">آدرس یا آی پی 2</string>
-    <string name="addressOrIp3">آدرس یا آی پی 3</string>
-    <string name="preAddressOrIp">آدرس یا آی پی های از پیش تعریف شده:</string>
-    <string name="userAddressOrIp">آدرس یا آی پی های وارد شده از طرف شما:</string>
-    <string name="port">پورت:</string>
+    <string name="app_name">Check Connection</string>
+    <string name="ip">IP</string>
+    <string name="ipAddress">IP Address</string>
+    <string name="ipAddress1">IP Address 1</string>
+    <string name="ipAddress2">IP Address 2</string>
+    <string name="ipAddress3">IP Address 3</string>
+    <string name="predefinedIpAddresses">Predefined IP Addresses:</string>
+    <string name="userIpAddresses">Your IP Addresses:</string>
+    <string name="port">Port</string>
     <string name="defaultPort">443</string>
-    <string name="ipTest">تست آی پی</string>
-    <string name="start">شروع تست گرفتن</string>
-    <string name="stop">پایان تست گرفتن</string>
-    <string name="delay">وقفه بین \n هر تست</string>
-    <string name="jsonDownloadFailed">اطلاعات از قبل تعریف شده، از اینترنت گرفته نشد. آیا دوباره تلاش می کنید؟</string>
-    <string name="tryAgain">تلاش دوباره</string>
-    <string name="manageAddresses">مدیریت آدرس ها</string>
-    <string name="noDataText">اطلاعاتی موجود نیست</string>
-    <string name="notifPermissionDenied">دسترسی به اعلان ها داده نشد</string>
-    <string name="connectionSuccess">اتصال موفق</string>
-    <string name="connectionFailed">اتصال ناموفق</string>
-    <string name="testing">⏳ در حال تست…</string>
-    <string name="connectivityStatus">وضعیت اتصال</string>
-    <string name="cancel">لغو</string>
-    <string name="confirm">تایید</string>
-    <string name="deny">رد</string>
-    <string name="error">خطا!</string>
-    <string name="canDrawOverlaysPermissionTitle">نیاز به دسترسی</string>
-    <string name="canDrawOverlaysPermissionContent">برای نشان دادن وضعیت اتصال به هر آدرس که وارد کرده اید نیاز است که یک دسترسی را فعال کنید تا برنامه بتواند وضعیت اتصال را در هر برنامه ای که می روید به شما نشان دهد. برنامه تست اتصال را در قسمتی که به آن هدایت می شوید انتخاب کرده و گزینه فعال شدن را انتخاب کنید.</string>
+    <string name="ipTest">IP Test</string>
+    <string name="start">Start Testing</string>
+    <string name="stop">Stop Testing</string>
+    <string name="delay">Delay between \n each test</string>
+    <string name="tryAgain">Try Again</string>
+    <string name="manageAddresses">Manage Addresses</string>
+    <string name="noDataText">No data available</string>
+    <string name="notifPermissionDenied">Notification permission denied</string>
+    <string name="connectionSuccess">Connection Success</string>
+    <string name="connectionFailed">Connection Failed</string>
+    <string name="testing">Testing⏳</string>
+    <string name="connectivityStatus">Connectivity Status</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
+    <string name="deny">Deny</string>
+    <string name="error">Error!</string>
+    <string name="canDrawOverlaysPermissionTitle">Need Permission</string>
+    <string name="canDrawOverlaysPermissionContent">In order to see connectivity, To display the connection status for any address you enter, you need to enable a permission so that the app can show you the connection status in any app you use. Select the connection test app in the section you are directed to, and enable the option to activate it.</string>
+    <string name="noAddress">There is no Address here</string>
+    <string name="navOpen">Open</string>
+    <string name="navClose">Close</string>
+    <string name="settings">Settings</string>
+    <string name="language">Language</string>>
+    <string name="languagePersianEnglish">Language (زبان)</string>>
+    <string name="testboxOverlay">Testboxes Overlay</string>>
 
+    <string-array name="language_array">
+        <item name="Farsi"> فارسی</item>
+        <item name="English">English</item>
+        <item name="SystemDefault">System Default</item>
+    </string-array>
+
+    <string-array name="overlay_array">
+        <item name="topLeft">Top Left</item>
+        <item name="topRight">Top Right</item>
+        <item name="bottomLeft">Bottom Left</item>
+        <item name="bottomRight">Bottom Right</item>
+        <item name="SystemDefault">Default</item>
+    </string-array>
 
 </resources>

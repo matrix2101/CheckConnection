@@ -28,7 +28,13 @@ class IPAddressLocalAdapter(
 
         val currentItem: IPAddressLocal = getItem(position)
 
-        textView.setText("${currentItem.name}  ${currentItem.ipAddress}  ${currentItem.port}")
+        val noAddress = context.resources.getString(R.string.noAddress)
+        if (currentItem.name != noAddress) {
+            textView.setText("${currentItem.name}  ${currentItem.ipAddress}  ${currentItem.port}")
+
+        } else {
+            textView.setText(noAddress)
+        }
 
         return view
     }
@@ -44,7 +50,15 @@ class IPAddressLocalAdapter(
         imageView.setOnClickListener {
             onImageClick(currentItem)
         }
-        textView.setText("${currentItem.name}  ${currentItem.ipAddress}  ${currentItem.port}")
+
+        val noAddress = context.resources.getString(R.string.noAddress)
+        if (currentItem.name != noAddress) {
+            textView.setText("${currentItem.name}  ${currentItem.ipAddress}  ${currentItem.port}")
+
+        } else {
+            textView.setText(noAddress)
+            imageView.visibility = View.INVISIBLE
+        }
 
         return view
     }

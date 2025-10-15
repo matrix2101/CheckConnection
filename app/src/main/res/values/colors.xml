@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#FFFEFE</color>
-    <color name="colorPrimaryDark">@color/backgroundGradiant1Start</color>
+    <color name="colorPrimaryDark">@color/statusbarBackground</color>
     <color name="colorAccent">#E3E0DA</color>
 
     <color name="colorPrimary_Dark">#000101</color>
@@ -77,13 +77,14 @@
     <color name="backgroundGradiant1Start">#E9EDF2</color>
     <color name="backgroundGradiant1End">#DCE1E5</color>
 
-    <color name="activityBackground">#DFE3E8</color>
-
     <color name="buttonBackgroundStart">#FDFEFF</color>
     <color name="buttonBackgroundEnd">#F4F8FB</color>
 
-    <color name="buttonBackgroundStart2">#AB6CD9</color>
-    <color name="buttonBackgroundEnd2">#6CB2D9</color>
+    <color name="buttonBackgroundStart2">#CCF4F6F9</color>
+    <color name="buttonBackgroundEnd2">#F4F6F9</color>
+
+    <color name="backgroundDrawerHeaderStart">#DCE1E5</color>
+    <color name="backgroundDrawerHeaderEnd">#D0D5D8</color>
 
     <color name="success">#21AD64</color>
     <color name="failed">#F44F5A</color>
@@ -91,5 +92,8 @@
     <color name="IP1BackgroundColor">#E1EBF4</color>
     <color name="IP2BackgroundColor">#F4EDE1</color>
     <color name="IP3BackgroundColor">#F9E5EB</color>
+
+    <color name="statusbarBackground">#F4F6F9</color>
+    <color name="toolbarBackground">#CCF4F6F9</color>
 
 </resources>

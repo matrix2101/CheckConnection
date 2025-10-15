@@ -45,6 +45,9 @@ class OverlayService : Service() {
 
     private lateinit var localBroadcastManager: LocalBroadcastManager
 
+    private var textBoxOverlayX: Int = 0
+    private var textBoxOverlayY: Int = 0
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate() {
         super.onCreate()
@@ -53,8 +56,13 @@ class OverlayService : Service() {
 
         val filter = IntentFilter(Constants.CONNECTIVITY_UPDATE)
         localBroadcastManager.registerReceiver(receiver, filter)
+        val filter2 = IntentFilter(Constants.OVERLAY_UPDATE)
+        localBroadcastManager.registerReceiver(receiver2, filter2)
 
         windowManager = getSystemService(WINDOW_SERVICE) as WindowManager
+
+        textBoxOverlayX = Utils().getSettings(applicationContext, Constants.OVERLAY_X_KEY, "").toInt()
+        textBoxOverlayY = Utils().getSettings(applicationContext, Constants.OVERLAY_Y_KEY, "").toInt()
 
         //overlayView1 =========================================================================
 
@@ -65,13 +73,13 @@ class OverlayService : Service() {
         textView1.text = "IP1"
 
         imageView1 = ImageView(this)
-        imageView1.setImageResource(R.drawable.icon_cross) // default
+        imageView1.setImageResource(R.drawable.icon_exclamation) // default
 
         overlayParams1 = initLayoutParams()
 
         overlayParams1.gravity = Gravity.TOP or Gravity.START
-        overlayParams1.x = 50
-        overlayParams1.y = 100
+        overlayParams1.x = textBoxOverlayX
+        overlayParams1.y = textBoxOverlayY
 
         cardView1.setOnTouchListener(initOnTouchListener(overlayParams1, cardView1))
         cardView1.setCardBackgroundColor(resources.getColor(R.color.IP1BackgroundColor, null))
@@ -91,13 +99,13 @@ class OverlayService : Service() {
         textView2.text = "IP2"
 
         imageView2 = ImageView(this)
-        imageView2.setImageResource(R.drawable.icon_cross) // default
+        imageView2.setImageResource(R.drawable.icon_exclamation) // default
 
         overlayParams2 = initLayoutParams()
 
         overlayParams2.gravity = Gravity.TOP or Gravity.START
-        overlayParams2.x = 50
-        overlayParams2.y = 225
+        overlayParams2.x = textBoxOverlayX
+        overlayParams2.y = textBoxOverlayY + 125
 
         cardView2.setOnTouchListener(initOnTouchListener(overlayParams2, cardView2))
         cardView2.setCardBackgroundColor(resources.getColor(R.color.IP2BackgroundColor, null))
@@ -117,13 +125,13 @@ class OverlayService : Service() {
         textView3.text = "IP3"
 
         imageView3 = ImageView(this)
-        imageView3.setImageResource(R.drawable.icon_cross) // default
+        imageView3.setImageResource(R.drawable.icon_exclamation) // default
 
         overlayParams3 = initLayoutParams()
 
         overlayParams3.gravity = Gravity.TOP or Gravity.START
-        overlayParams3.x = 50
-        overlayParams3.y = 350
+        overlayParams3.x = textBoxOverlayX
+        overlayParams3.y = textBoxOverlayY + 250
 
         cardView3.setOnTouchListener(initOnTouchListener(overlayParams3, cardView3))
         cardView3.setCardBackgroundColor(resources.getColor(R.color.IP3BackgroundColor, null))
@@ -170,7 +178,37 @@ class OverlayService : Service() {
                 } else {
                     cardView3.isVisible = false
                 }
+            }
+        }
+    }
 
+
+    //==============================================================================================
+
+    private val receiver2 = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            if (intent.action == Constants.OVERLAY_UPDATE) {
+                val overlayType = intent.getStringExtra(Constants.OVERLAY_KEY)
+                textBoxOverlayX = intent.getIntExtra(Constants.OVERLAY_X_KEY, 0)
+                textBoxOverlayY = intent.getIntExtra(Constants.OVERLAY_Y_KEY, 0)
+
+                overlayParams1.x = textBoxOverlayX
+                overlayParams1.y = textBoxOverlayY
+
+                overlayParams2.x = textBoxOverlayX
+                overlayParams2.y = textBoxOverlayY + 125
+
+                overlayParams3.x = textBoxOverlayX
+                overlayParams3.y = textBoxOverlayY + 250
+
+                try {
+                    windowManager.updateViewLayout(cardView1, overlayParams1)
+                    windowManager.updateViewLayout(cardView2, overlayParams2)
+                    windowManager.updateViewLayout(cardView3, overlayParams3)
+
+                } catch (e: IllegalArgumentException) {
+                    e.printStackTrace()
+                }
             }
         }
     }

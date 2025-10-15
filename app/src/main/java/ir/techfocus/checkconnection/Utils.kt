@@ -1,14 +1,16 @@
 package ir.techfocus.checkconnection
 
 import android.content.Context
+import android.content.res.Configuration
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.util.Log
+import android.os.Build
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
 import com.google.gson.Gson
 import java.io.IOException
+import java.util.Locale
 
 class Utils {
 
@@ -178,4 +180,38 @@ class Utils {
             e.printStackTrace()
         }
     }
+
+    //==============================================================================================
+
+    fun saveSettings(context: Context, settingKey: String, settingValue: String) {
+        val sharedPreferences = context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+        sharedPreferences.edit().putString(settingKey, settingValue).apply()
+    }
+
+    fun getSettings(context: Context, settingKey: String, defaultValue: String): String {
+        val sharedPreferences = context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+        return sharedPreferences.getString(settingKey, defaultValue) ?: defaultValue
+    }
+
+    //==============================================================================================
+
+    fun setLocale(context: Context, languageCode: String): Context {
+        val locale = Locale(languageCode)
+        Locale.setDefault(locale)
+        val config = Configuration(context.resources.configuration)
+        config.setLocale(locale)
+        return context.createConfigurationContext(config)
+    }
+
+    fun getSystemLanguage(context: Context): String {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            context.resources.configuration.locales.get(0).language
+        } else {
+            context.resources.configuration.locale.language
+        }
+    }
+
+    //==============================================================================================
+
+
 }

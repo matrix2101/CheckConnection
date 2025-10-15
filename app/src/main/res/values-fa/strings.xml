@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">تست اتصال</string>
+    <string name="ip">آی پی</string>
+    <string name="ipAddress">آی پی آدرس</string>
+    <string name="ipAddress1">آی پی آدرس 1</string>
+    <string name="ipAddress2">آی پی آدرس 2</string>
+    <string name="ipAddress3">آی پی آدرس 3</string>
+    <string name="predefinedIpAddresses">آی پی آدرس های از پیش تعریف شده:</string>
+    <string name="userIpAddresses">آی پی آدرس های وارد شده شما</string>
+    <string name="port">پورت</string>
+    <string name="defaultPort">443</string>
+    <string name="ipTest">تست آی پی</string>
+    <string name="start">شروع تست گرفتن</string>
+    <string name="stop">پایان تست گرفتن</string>
+    <string name="delay">وقفه بین \n هر تست</string>
+    <string name="tryAgain">تلاش دوباره</string>
+    <string name="manageAddresses">مدیریت آدرس ها</string>
+    <string name="noDataText">اطلاعاتی موجود نیست</string>
+    <string name="notifPermissionDenied">دسترسی به اعلان ها داده نشد</string>
+    <string name="connectionSuccess">اتصال موفق</string>
+    <string name="connectionFailed">اتصال ناموفق</string>
+    <string name="testing">⏳ در حال تست…</string>
+    <string name="connectivityStatus">وضعیت اتصال</string>
+    <string name="cancel">لغو</string>
+    <string name="confirm">تایید</string>
+    <string name="deny">رد</string>
+    <string name="error">خطا!</string>
+    <string name="canDrawOverlaysPermissionTitle">نیاز به دسترسی</string>
+    <string name="canDrawOverlaysPermissionContent">برای نشان دادن وضعیت اتصال به هر آدرس که وارد کرده اید نیاز است که یک دسترسی را فعال کنید تا برنامه بتواند وضعیت اتصال را در هر برنامه ای که می روید به شما نشان دهد. برنامه تست اتصال را در قسمتی که به آن هدایت می شوید انتخاب کرده و گزینه فعال شدن را انتخاب کنید.</string>
+    <string name="noAddress">آدرسی وجود ندارد</string>
+    <string name="navOpen">باز</string>
+    <string name="navClose">بسته</string>
+    <string name="settings">تنظیمات</string>
+    <string name="language">زبان</string>>
+    <string name="languagePersianEnglish">زبان (Language)</string>>
+    <string name="testboxOverlay">مکان جعبه های تست</string>>
+
+    <string-array name="language_array">
+        <item name="Farsi"> فارسی</item>
+        <item name="English">English</item>
+        <item name="SystemDefault">پیش فرض دستگاه</item>
+    </string-array>
+
+    <string-array name="overlay_array">
+        <item name="topLeft">بالا چپ</item>
+        <item name="topRight">بالا راست</item>
+        <item name="bottomLeft">پایین چپ</item>
+        <item name="bottomRight">پایین راست</item>
+        <item name="SystemDefault">پیش فرض</item>
+    </string-array>
+
+</resources>

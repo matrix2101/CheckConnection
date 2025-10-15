@@ -8,7 +8,7 @@ import androidx.room.Query
 @Dao
 interface IPAddressDao {
     @Query("SELECT * FROM IPAddressLocal")
-    suspend fun getAllIPAddressesLocal(): List<IPAddressLocal>?
+    suspend fun getAllIPAddressesLocal(): MutableList<IPAddressLocal>?
 
     @Query("SELECT * FROM IPAddressLocal WHERE ipAddress = (:ipAddress)")
     suspend fun getIPAddressLocalByIpAddress(ipAddress: String): IPAddressLocal?
@@ -46,4 +46,15 @@ interface IPAddressDao {
 
     @Query("DELETE FROM IPAddressLast")
     suspend fun deleteAllIPAddressLast()
+
+    //====================================================
+
+    @Query("SELECT * FROM MySettings WHERE `key` = (:key)")
+    fun getSettingByName(key: String): MySettings
+
+    @Insert(entity = MySettings::class, OnConflictStrategy.REPLACE)
+    suspend fun insertSetting(mySettings: MySettings)
+
+    @Query("DELETE FROM MySettings WHERE `key` = (:key)")
+    suspend fun deleteSetting(key: String)
 }

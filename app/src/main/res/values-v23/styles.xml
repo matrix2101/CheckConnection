@@ -11,6 +11,12 @@
         <item name="android:windowLightStatusBar">true</item>
     </style>
 
+    <style name="NavDrawerTextStyle" parent="TextAppearance.AppCompat.Body1">
+        <item name="fontFamily">@font/iran_yekan_medium</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/c505050</item>
+    </style>
+
     <!--=========================================================================================-->
 
     <style name="AppThemeDarkStyle" parent="Theme.AppCompat.Light.NoActionBar">
