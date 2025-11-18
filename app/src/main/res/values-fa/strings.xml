@@ -31,9 +31,11 @@
     <string name="navOpen">باز</string>
     <string name="navClose">بسته</string>
     <string name="settings">تنظیمات</string>
-    <string name="language">زبان</string>>
-    <string name="languagePersianEnglish">زبان (Language)</string>>
-    <string name="testboxOverlay">مکان جعبه های تست</string>>
+    <string name="language">زبان</string>
+    <string name="languagePersianEnglish">زبان (Language)</string>
+    <string name="testboxOverlay">مکان جعبه های تست</string>
+    <string name="domain">دامنه</string>
+    <string name="country">کشور</string>
 
     <string-array name="language_array">
         <item name="Farsi"> فارسی</item>

@@ -4,6 +4,8 @@ import java.net.URL
 
 class Constants {
     companion object {
+        const val IP_INFO_TOKEN: String = "79a507afa98648"
+
         const val CONNECTIVITY_UPDATE: String = "ir.techfocus.CONNECTIVITY_UPDATE"
         const val ADDRESS_TEST_KEY: String = "addressTest"
         const val DELAY: String = "delay"
@@ -54,6 +56,8 @@ class Constants {
 
         const val OVERLAY_UPDATE: String = "ir.techfocus.OVERLAY_UPDATE"
 
-
+        const val IPV4: String = "IPv4"
+        const val IPV6: String = "IPv6"
+        const val DOMAIN: String = "Domain"
     }
 }

@@ -147,7 +147,7 @@
                         android:textColor="@color/c404040"
                         android:textSize="@dimen/fourthText"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/guideline2"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/clIP1" />
 
                     <EditText
@@ -162,7 +162,7 @@
                         android:singleLine="true"
                         android:textColor="@color/c303030"
                         app:layout_constraintEnd_toStartOf="@+id/btnClearIP1"
-                        app:layout_constraintStart_toStartOf="@+id/guideline2"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtIP1" />
 
                     <ImageButton
@@ -188,7 +188,7 @@
                         android:textColor="@color/c404040"
                         android:textSize="@dimen/fourthText"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/guideline2"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/edtIP1" />
 
                     <EditText
@@ -196,16 +196,14 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="4dp"
                         android:background="@drawable/edittext1"
                         android:fontFamily="@font/iran_yekan_light"
                         android:hint="@string/defaultPort"
                         android:inputType="numberDecimal"
                         android:singleLine="true"
                         android:textColor="@color/c303030"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/btnClearPort1"
-                        app:layout_constraintStart_toStartOf="@+id/guideline2"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtPort1" />
 
                     <ImageButton
@@ -219,16 +217,82 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtPort1" />
 
+                    <TextView
+                        android:id="@+id/txtDomainLabel1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|end"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/iran_yekan_medium"
+                        android:padding="8dp"
+                        android:text="@string/domain"
+                        android:textColor="@color/c404040"
+                        android:textSize="@dimen/fourthText"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/guideline1"
+                        app:layout_constraintTop_toBottomOf="@+id/edtPort1" />
+
+                    <EditText
+                        android:id="@+id/txtDomain1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/edittext1"
+                        android:enabled="false"
+                        android:fontFamily="@font/iran_yekan_regular"
+                        android:textColor="@color/c303030"
+                        android:textSize="@dimen/secondText"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/guideline1"
+                        app:layout_constraintTop_toBottomOf="@+id/txtDomainLabel1" />
+
+                    <TextView
+                        android:id="@+id/txtCountryLabel1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|end"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/iran_yekan_medium"
+                        android:padding="8dp"
+                        android:text="@string/country"
+                        android:textColor="@color/c404040"
+                        android:textSize="@dimen/fourthText"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/guideline1"
+                        app:layout_constraintTop_toBottomOf="@+id/txtDomain1" />
+
+                    <EditText
+                        android:id="@+id/txtCountry1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/edittext1"
+                        android:enabled="false"
+                        android:fontFamily="@font/iran_yekan_regular"
+                        android:textColor="@color/c303030"
+                        android:textSize="@dimen/secondText"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/guideline1"
+                        app:layout_constraintTop_toBottomOf="@+id/txtCountryLabel1" />
+
                     <com.github.mikephil.charting.charts.PieChart
                         android:id="@+id/chartIP1"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
+                        android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="8dp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                        app:layout_constraintEnd_toEndOf="@+id/guideline1"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/txtIP1" />
+                        app:layout_constraintTop_toBottomOf="@+id/edtPort1" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.4" />
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guideline2"
@@ -362,7 +426,7 @@
                         android:textColor="@color/c404040"
                         android:textSize="@dimen/fourthText"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/guideline4"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/clIP2" />
 
                     <EditText
@@ -377,7 +441,7 @@
                         android:singleLine="true"
                         android:textColor="@color/c303030"
                         app:layout_constraintEnd_toStartOf="@+id/btnClearIP2"
-                        app:layout_constraintStart_toStartOf="@+id/guideline4"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtIP2" />
 
                     <ImageButton
@@ -403,7 +467,7 @@
                         android:textColor="@color/c404040"
                         android:textSize="@dimen/fourthText"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/guideline4"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/edtIP2" />
 
                     <EditText
@@ -411,16 +475,14 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="4dp"
                         android:background="@drawable/edittext1"
                         android:fontFamily="@font/iran_yekan_light"
                         android:hint="@string/defaultPort"
                         android:inputType="numberDecimal"
                         android:singleLine="true"
                         android:textColor="@color/c303030"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/btnClearPort2"
-                        app:layout_constraintStart_toStartOf="@+id/guideline4"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtPort2" />
 
                     <ImageButton
@@ -434,16 +496,82 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtPort2" />
 
+                    <TextView
+                        android:id="@+id/txtDomainLabel2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|end"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/iran_yekan_medium"
+                        android:padding="8dp"
+                        android:text="@string/domain"
+                        android:textColor="@color/c404040"
+                        android:textSize="@dimen/fourthText"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/guideline3"
+                        app:layout_constraintTop_toBottomOf="@+id/edtPort2" />
+
+                    <EditText
+                        android:id="@+id/txtDomain2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/edittext1"
+                        android:enabled="false"
+                        android:fontFamily="@font/iran_yekan_regular"
+                        android:textColor="@color/c303030"
+                        android:textSize="@dimen/secondText"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/guideline3"
+                        app:layout_constraintTop_toBottomOf="@+id/txtDomainLabel2" />
+
+                    <TextView
+                        android:id="@+id/txtCountryLabel2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|end"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/iran_yekan_medium"
+                        android:padding="8dp"
+                        android:text="@string/country"
+                        android:textColor="@color/c404040"
+                        android:textSize="@dimen/fourthText"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/guideline3"
+                        app:layout_constraintTop_toBottomOf="@+id/txtDomain2" />
+
+                    <EditText
+                        android:id="@+id/txtCountry2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/edittext1"
+                        android:enabled="false"
+                        android:fontFamily="@font/iran_yekan_regular"
+                        android:textColor="@color/c303030"
+                        android:textSize="@dimen/secondText"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/guideline3"
+                        app:layout_constraintTop_toBottomOf="@+id/txtCountryLabel2" />
+
                     <com.github.mikephil.charting.charts.PieChart
                         android:id="@+id/chartIP2"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
+                        android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="8dp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                        app:layout_constraintEnd_toEndOf="@+id/guideline3"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/txtIP2" />
+                        app:layout_constraintTop_toBottomOf="@+id/edtPort2" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.4" />
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guideline4"
@@ -456,12 +584,16 @@
 
                 <!--==========================================================-->
 
+                <!--==========================================================-->
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
                     android:background="@drawable/card1"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
 
@@ -578,7 +710,7 @@
                         android:textColor="@color/c404040"
                         android:textSize="@dimen/fourthText"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/guideline6"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/clIP3" />
 
                     <ImageButton
@@ -604,7 +736,7 @@
                         android:singleLine="true"
                         android:textColor="@color/c303030"
                         app:layout_constraintEnd_toStartOf="@+id/btnClearIP3"
-                        app:layout_constraintStart_toStartOf="@+id/guideline6"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtIP3" />
 
                     <TextView
@@ -619,7 +751,7 @@
                         android:textColor="@color/c404040"
                         android:textSize="@dimen/fourthText"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/guideline6"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/edtIP3" />
 
                     <EditText
@@ -627,16 +759,14 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="4dp"
                         android:background="@drawable/edittext1"
                         android:fontFamily="@font/iran_yekan_light"
                         android:hint="@string/defaultPort"
                         android:inputType="numberDecimal"
                         android:singleLine="true"
                         android:textColor="@color/c303030"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/btnClearPort3"
-                        app:layout_constraintStart_toStartOf="@+id/guideline6"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtPort3" />
 
                     <ImageButton
@@ -650,16 +780,82 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtPort3" />
 
+                    <TextView
+                        android:id="@+id/txtDomainLabel3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|end"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/iran_yekan_medium"
+                        android:padding="8dp"
+                        android:text="@string/domain"
+                        android:textColor="@color/c404040"
+                        android:textSize="@dimen/fourthText"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/guideline5"
+                        app:layout_constraintTop_toBottomOf="@+id/edtPort3" />
+
+                    <EditText
+                        android:id="@+id/txtDomain3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/edittext1"
+                        android:enabled="false"
+                        android:fontFamily="@font/iran_yekan_regular"
+                        android:textColor="@color/c303030"
+                        android:textSize="@dimen/secondText"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/guideline5"
+                        app:layout_constraintTop_toBottomOf="@+id/txtDomainLabel3" />
+
+                    <TextView
+                        android:id="@+id/txtCountryLabel3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|end"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/iran_yekan_medium"
+                        android:padding="8dp"
+                        android:text="@string/country"
+                        android:textColor="@color/c404040"
+                        android:textSize="@dimen/fourthText"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/guideline5"
+                        app:layout_constraintTop_toBottomOf="@+id/txtDomain3" />
+
+                    <EditText
+                        android:id="@+id/txtCountry3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/edittext1"
+                        android:enabled="false"
+                        android:fontFamily="@font/iran_yekan_regular"
+                        android:textColor="@color/c303030"
+                        android:textSize="@dimen/secondText"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/guideline5"
+                        app:layout_constraintTop_toBottomOf="@+id/txtCountryLabel3" />
+
                     <com.github.mikephil.charting.charts.PieChart
                         android:id="@+id/chartIP3"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
+                        android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="8dp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/guideline6"
+                        app:layout_constraintEnd_toEndOf="@+id/guideline5"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/txtIP3" />
+                        app:layout_constraintTop_toBottomOf="@+id/edtPort3" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.4" />
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guideline6"
@@ -669,8 +865,6 @@
                         app:layout_constraintGuide_percent="0.35" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <!--==========================================================-->
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout4"

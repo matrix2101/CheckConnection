@@ -7,6 +7,7 @@ import android.app.Service
 import android.content.Intent
 import android.os.Build
 import android.os.IBinder
+import androidx.compose.ui.unit.Constraints
 import androidx.core.app.NotificationCompat
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import kotlinx.coroutines.CoroutineScope
@@ -16,9 +17,11 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.io.IOException
+import java.net.InetAddress
 import java.net.InetSocketAddress
 import java.net.Socket
 import java.util.concurrent.TimeUnit
@@ -78,6 +81,7 @@ class ConnectivityMonitorService : Service() {
     private fun startMonitoring() {
         scope.launch {
             val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+
             while (isActive) {
                 notifText = ""
                 val httpOk = hasUsableInternet()
@@ -86,6 +90,7 @@ class ConnectivityMonitorService : Service() {
                         notifText += "1✅"
                         addressTestArray[0].reachable = true
                         addressTestArray[0].testSuccess = addressTestArray[0].testSuccess + 1
+
                     } else {
                         notifText += "1❌"
                         addressTestArray[0].reachable = false
@@ -97,6 +102,7 @@ class ConnectivityMonitorService : Service() {
                         notifText += "  2✅"
                         addressTestArray[1].reachable = true
                         addressTestArray[1].testSuccess = addressTestArray[1].testSuccess + 1
+
                     } else {
                         notifText += "  2❌"
                         addressTestArray[1].reachable = false
@@ -108,6 +114,7 @@ class ConnectivityMonitorService : Service() {
                         notifText += "  3✅"
                         addressTestArray[2].reachable = true
                         addressTestArray[2].testSuccess = addressTestArray[2].testSuccess + 1
+
                     } else {
                         notifText += "  3❌"
                         addressTestArray[2].reachable = false
@@ -155,7 +162,7 @@ class ConnectivityMonitorService : Service() {
     fun isIpReachableViaTcp(addressTest: AddressTest): Boolean {
         return try {
             Socket().use { socket ->
-                socket.connect(InetSocketAddress(addressTest.ip, addressTest.port), timeOut)
+                socket.connect(InetSocketAddress(addressTest.ipOrDomain, addressTest.port), timeOut)
                 socket.soTimeout = timeOut
                 socket.getOutputStream().write(0xFF)
                 true

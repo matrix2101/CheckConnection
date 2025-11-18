@@ -40,6 +40,9 @@ import ir.techfocus.checkconnection.databinding.ActivityMainBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.net.InetAddress
+import kotlin.collections.plus
 
 
 class MainActivity : BaseActivity() {
@@ -200,7 +203,7 @@ class MainActivity : BaseActivity() {
         val remote = db.dao().getIPAddressRemoteByIpAddress(ipAddress)
         val local = db.dao().getIPAddressLocalByIpAddress(ipAddress)
 
-        val max = db.dao().getGreatestIdNameLocal().toInt()
+        val max = db.dao().getGreatestIdNameLocal()
 
         if ((remote == null || remote.ipAddress == "") && (local == null || local.ipAddress == "")) {
             db.dao().insertIPAddressLocal(IPAddressLocal((max + 1).toString(), ipAddress, port.toInt()))
@@ -228,6 +231,15 @@ class MainActivity : BaseActivity() {
                 setData(binding.chartIP1, addressTestArray[0])
                 setData(binding.chartIP2, addressTestArray[1])
                 setData(binding.chartIP3, addressTestArray[2])
+
+                binding.txtDomain1.setText(addressTestArray[0].domain)
+                binding.txtCountry1.setText(addressTestArray[0].country)
+
+                binding.txtDomain2.setText(addressTestArray[1].domain)
+                binding.txtCountry2.setText(addressTestArray[1].country)
+
+                binding.txtDomain3.setText(addressTestArray[2].domain)
+                binding.txtCountry3.setText(addressTestArray[2].country)
             }
         }
     }
@@ -333,9 +345,7 @@ class MainActivity : BaseActivity() {
     fun initButtons() {
         val startStopClickListener = View.OnClickListener {
             if (startFlag) {
-
                 if (!Settings.canDrawOverlays(context)) {
-
                     val confirmListener = object : AlertDialogFragment.AlertDialogListener {
                         override fun onClick(alertDialog: AlertDialogFragment?) {
                             val intent = Intent(
@@ -361,118 +371,174 @@ class MainActivity : BaseActivity() {
                     )
 
                 } else {
-                    var addressTestArray = emptyArray<AddressTest>()
+                    lifecycleScope.launch {
+                        var addressTestArray = emptyArray<AddressTest>()
 
-                    var delay: Long = Constants.DEFAULT_DELAY
-                    if (Utils().validateLongInput(binding.edtDelay)) {
-                        delay = binding.edtDelay.text.toString().toLong()
-                    }
-                    val timeOut = Constants.DEFAULT_TIMEOUT
-
-                    //================================================================
-
-                    if (Utils().validation(binding.edtIP1, binding.edtPort1) && Utils().validateIntInput(binding.edtPort1)) {
-                        val addressTest1 = AddressTest(
-                            binding.edtIP1.text.toString(),
-                            binding.edtPort1.text.toString().toInt(),
-                            true,
-                            false,
-                            0,
-                            0
-                        )
-                        addressTestArray += addressTest1
-                        lifecycleScope.launch {
-                            addItemLocal(binding.edtIP1.text.toString(), binding.edtPort1.text.toString())
+                        var delay: Long = Constants.DEFAULT_DELAY
+                        if (Utils().validateLongInput(binding.edtDelay)) {
+                            delay = binding.edtDelay.text.toString().toLong()
                         }
-                    } else {
-                        val addressTest = AddressTest(
-                            Constants.DEFAULT_IP,
-                            Constants.DEFAULT_PORT,
-                            false,
-                            false,
-                            0,
-                            0
-                        )
-                        addressTestArray += addressTest
-                    }
+                        val timeOut = Constants.DEFAULT_TIMEOUT
 
-                    //================================================================
+                        //================================================================
 
-                    if (Utils().validation(binding.edtIP2, binding.edtPort2) && Utils().validateIntInput(binding.edtPort2)) {
-                        val addressTest2 = AddressTest(
-                            binding.edtIP2.text.toString(),
-                            binding.edtPort2.text.toString().toInt(),
-                            true,
-                            false,
-                            0,
-                            0
-                        )
-                        addressTestArray += addressTest2
-                        lifecycleScope.launch {
-                            addItemLocal(binding.edtIP2.text.toString(), binding.edtPort2.text.toString())
+                        var ipOrDomains = emptyArray<String>()
+                        ipOrDomains += binding.edtIP1.text.toString()
+                        ipOrDomains += binding.edtIP2.text.toString()
+                        ipOrDomains += binding.edtIP3.text.toString()
+
+                        var ips = emptyArray<String>()
+
+                        for (i: Int in 0..2) {
+                            if (detectInputType(ipOrDomains[i]) == Constants.DOMAIN) {
+                                ips += getIpFromDomain(ipOrDomains[i])
+
+                            } else if (detectInputType(ipOrDomains[i]) == Constants.IPV4) {
+                                ips += ipOrDomains[i]
+
+                            } else if (detectInputType(ipOrDomains[i]) == Constants.IPV6) {
+                                ips += ipOrDomains[i]
+
+                            } else {
+                                ips += ""
+                            }
                         }
-                    } else {
-                        val addressTest = AddressTest(
-                            Constants.DEFAULT_IP,
-                            Constants.DEFAULT_PORT,
-                            false,
-                            false,
-                            0,
-                            0
-                        )
-                        addressTestArray += addressTest
-                    }
 
-                    //================================================================
+                        var ipInfoArray = emptyArray<IPInfoLite>()
 
-                    if (Utils().validation(binding.edtIP3, binding.edtPort3) && Utils().validateIntInput(binding.edtPort3)) {
-                        val addressTest3 = AddressTest(
-                            binding.edtIP3.text.toString(),
-                            binding.edtPort3.text.toString().toInt(),
-                            true,
-                            false,
-                            0,
-                            0
-                        )
-                        addressTestArray += addressTest3
-                        lifecycleScope.launch {
-                            addItemLocal(binding.edtIP3.text.toString(), binding.edtPort3.text.toString())
+                        ipInfoArray += initIPInfoLite(ips[0])
+                        ipInfoArray += initIPInfoLite(ips[1])
+                        ipInfoArray += initIPInfoLite(ips[2])
+
+                        //================================================================
+
+                        if (Utils().validation(binding.edtIP1, binding.edtPort1) && Utils().validateIntInput(binding.edtPort1)) {
+                            val addressTest1 = AddressTest(
+                                binding.edtIP1.text.toString(),
+                                binding.edtPort1.text.toString().toInt(),
+                                true,
+                                false,
+                                0,
+                                0,
+                                ipInfoArray[0].ip,
+                                ipInfoArray[0].asDomain,
+                                ipInfoArray[0].countryCode,
+                                ipInfoArray[0].country
+                            )
+                            addressTestArray += addressTest1
+                            lifecycleScope.launch {
+                                addItemLocal(binding.edtIP1.text.toString(), binding.edtPort1.text.toString())
+                            }
+                        } else {
+                            val addressTest = AddressTest(
+                                Constants.DEFAULT_IP,
+                                Constants.DEFAULT_PORT,
+                                false,
+                                false,
+                                0,
+                                0,
+                                "",
+                                "",
+                                "",
+                                ""
+                            )
+                            addressTestArray += addressTest
                         }
-                    } else {
-                        val addressTest = AddressTest(
-                            Constants.DEFAULT_IP,
-                            Constants.DEFAULT_PORT,
-                            false,
-                            false,
-                            0,
-                            0
-                        )
-                        addressTestArray += addressTest
+
+                        //================================================================
+
+                        if (Utils().validation(binding.edtIP2, binding.edtPort2) && Utils().validateIntInput(binding.edtPort2)) {
+                            val addressTest2 = AddressTest(
+                                binding.edtIP2.text.toString(),
+                                binding.edtPort2.text.toString().toInt(),
+                                true,
+                                false,
+                                0,
+                                0,
+                                ipInfoArray[1].ip,
+                                ipInfoArray[1].asDomain,
+                                ipInfoArray[1].countryCode,
+                                ipInfoArray[1].country
+                            )
+                            addressTestArray += addressTest2
+                            lifecycleScope.launch {
+                                addItemLocal(binding.edtIP2.text.toString(), binding.edtPort2.text.toString())
+                            }
+                        } else {
+                            val addressTest = AddressTest(
+                                Constants.DEFAULT_IP,
+                                Constants.DEFAULT_PORT,
+                                false,
+                                false,
+                                0,
+                                0,
+                                "",
+                                "",
+                                "",
+                                ""
+                            )
+                            addressTestArray += addressTest
+                        }
+
+                        //================================================================
+
+                        if (Utils().validation(binding.edtIP3, binding.edtPort3) && Utils().validateIntInput(binding.edtPort3)) {
+                            val addressTest3 = AddressTest(
+                                binding.edtIP3.text.toString(),
+                                binding.edtPort3.text.toString().toInt(),
+                                true,
+                                false,
+                                0,
+                                0,
+                                ipInfoArray[2].ip,
+                                ipInfoArray[2].asDomain,
+                                ipInfoArray[2].countryCode,
+                                ipInfoArray[2].country
+                            )
+                            addressTestArray += addressTest3
+                            lifecycleScope.launch {
+                                addItemLocal(binding.edtIP3.text.toString(), binding.edtPort3.text.toString())
+                            }
+                        } else {
+                            val addressTest = AddressTest(
+                                Constants.DEFAULT_IP,
+                                Constants.DEFAULT_PORT,
+                                false,
+                                false,
+                                0,
+                                0,
+                                "",
+                                "",
+                                "",
+                                ""
+                            )
+                            addressTestArray += addressTest
+                        }
+
+                        startService(Intent(activity, OverlayService::class.java))
+
+
+                        permissionHelper = PermissionHelper(activity, arrayOf(Manifest.permission.POST_NOTIFICATIONS), 100)
+                        permissionHelper?.requestAll { }
+
+                        val intent = Intent(context, ConnectivityMonitorService::class.java)
+                        val bundle = Bundle()
+                        bundle.putSerializable(Constants.ADDRESS_TEST_KEY, addressTestArray)
+                        bundle.putLong(Constants.DELAY, delay)
+                        bundle.putInt(Constants.TIME_OUT, timeOut)
+                        intent.putExtras(bundle)
+
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                            startForegroundService(intent)
+
+                        } else {
+                            startService(intent)
+                        }
+
+                        binding.btnStartStop.setImageResource(R.drawable.button_start)
+                        binding.btnStartStopIcon.setImageResource(R.drawable.ic_stop)
+                        startFlag = false
                     }
-
-                    startService(Intent(activity, OverlayService::class.java))
-
-
-                    permissionHelper = PermissionHelper(activity, arrayOf(Manifest.permission.POST_NOTIFICATIONS), 100)
-                    permissionHelper?.requestAll { }
-
-                    val intent = Intent(context, ConnectivityMonitorService::class.java)
-                    val bundle = Bundle()
-                    bundle.putSerializable(Constants.ADDRESS_TEST_KEY, addressTestArray)
-                    bundle.putLong(Constants.DELAY, delay)
-                    bundle.putInt(Constants.TIME_OUT, timeOut)
-                    intent.putExtras(bundle)
-
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        startForegroundService(intent)
-
-                    } else {
-                        startService(intent)
-                    }
-
-                    binding.btnStartStop.setImageResource(R.drawable.button_start)
-                    binding.btnStartStopIcon.setImageResource(R.drawable.ic_stop)
-                    startFlag = false
                 }
 
             } else {
@@ -493,6 +559,23 @@ class MainActivity : BaseActivity() {
         initDeleteButton(binding.edtPort2, binding.btnClearPort2)
         initDeleteButton(binding.edtIP3, binding.btnClearIP3)
         initDeleteButton(binding.edtPort3, binding.btnClearPort3)
+    }
+
+    //==============================================================================================
+
+    suspend fun initIPInfoLite(ip: String): IPInfoLite{
+        try {
+            val ipInfo1: IPInfoLite? = ApiClient.apiInterface.getIPInfo("https://api.ipinfo.io/lite/" + ip + "?token=" + Constants.IP_INFO_TOKEN)
+            if (ipInfo1 != null){
+                return ipInfo1
+
+            } else{
+                return IPInfoLite("", "", "", "", "", "", "", "")
+            }
+
+        } catch (e: Exception) {
+            return IPInfoLite("", "", "", "", "", "", "", "")
+        }
     }
 
     //==============================================================================================
@@ -693,7 +776,7 @@ class MainActivity : BaseActivity() {
     //==============================================================================================
 
     fun changeLocale(context: Context, language: String) {
-        Utils().saveSettings(context, Constants.LANGUAGE,language)
+        Utils().saveSettings(context, Constants.LANGUAGE, language)
         Utils().setLocale(context, language)
         restartApp(context)
     }
@@ -704,6 +787,47 @@ class MainActivity : BaseActivity() {
         context.startActivity(intent)
         if (context is Activity) {
             context.finish()
+        }
+    }
+
+    //==============================================================================================
+
+    suspend fun detectInputType(input: String): String {
+        val trimmed = input.trim()
+
+        // IPv4 regex
+        val ipv4Regex = Regex("^((25[0-5]|2[0-4]\\d|1\\d{2}|[1-9]?\\d)\\.){3}(25[0-5]|2[0-4]\\d|1\\d{2}|[1-9]?\\d)\$")
+
+        // IPv6 regex (simplified but works for 99% cases)
+        val ipv6Regex = Regex("^[0-9a-fA-F:]+$")
+
+        // Domain regex (supports unicode domains too)
+        val domainRegex = Regex("^(?=.{1,253}\$)(?!-)([a-zA-Z0-9ا-ی]+(-[a-zA-Z0-9ا-ی]+)*\\.)+[a-zA-Zا-ی]{2,}\$")
+
+        return when {
+            ipv4Regex.matches(trimmed) -> Constants.IPV4
+            ipv6Regex.matches(trimmed) && trimmed.contains(":") -> Constants.IPV6
+            domainRegex.matches(trimmed) -> Constants.DOMAIN
+            else -> "Unknown"
+        }
+    }
+
+    //==============================================================================================
+
+    suspend fun getIpFromDomain(domain: String): String {
+        return withContext(Dispatchers.IO) {
+            try {
+                if (InetAddress.getByName(domain).hostAddress != null) {
+                    return@withContext InetAddress.getByName(domain).hostAddress
+
+                } else {
+                    return@withContext ""
+                }
+
+            } catch (e: Exception) {
+                e.printStackTrace()
+                return@withContext ""
+            }
         }
     }
 }

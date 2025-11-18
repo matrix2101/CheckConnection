@@ -26,6 +26,288 @@
                 android:layout_height="wrap_content">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/card1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+                    <TextView
+                        android:id="@+id/txtTitle3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|end"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:fontFamily="@font/iran_yekan_regular"
+                        android:gravity="center"
+                        android:text="@string/ipAddress3"
+                        android:textColor="@color/c303030"
+                        android:textSize="@dimen/secondText"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clPreIP3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/group3"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtTitle3">
+
+                        <TextView
+                            android:id="@+id/txtPreIP3Label"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right|end"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:fontFamily="@font/iran_yekan_medium"
+                            android:text="@string/predefinedIpAddresses"
+                            android:textColor="@color/c404040"
+                            android:textSize="@dimen/fifthText"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ir.techfocus.checkconnection.CustomSpinner
+                            android:id="@+id/spnPreIP3"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/spinner2"
+                            android:dropDownWidth="match_parent"
+                            android:popupBackground="@drawable/background_spn_popup"
+                            android:textColor="@color/c707070"
+                            android:textSize="@dimen/editTextSize2"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txtPreIP3Label" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clIP3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/group3"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/clPreIP3">
+
+                        <TextView
+                            android:id="@+id/txtIP3Label"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right|end"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:fontFamily="@font/iran_yekan_medium"
+                            android:text="@string/userIpAddresses"
+                            android:textColor="@color/c404040"
+                            android:textSize="@dimen/fifthText"
+                            app:layout_constraintBottom_toTopOf="@+id/spnIP3"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ir.techfocus.checkconnection.CustomSpinner
+                            android:id="@+id/spnIP3"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/spinner2"
+                            android:dropDownWidth="match_parent"
+                            android:popupBackground="@drawable/background_spn_popup"
+                            android:textColor="@color/c707070"
+                            android:textSize="@dimen/editTextSize2"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txtIP3Label" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/txtIP3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|end"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/iran_yekan_medium"
+                        android:padding="8dp"
+                        android:text="@string/ipAddress"
+                        android:textColor="@color/c404040"
+                        android:textSize="@dimen/fourthText"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/clIP3" />
+
+                    <ImageButton
+                        android:id="@+id/btnClearIP3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:src="@drawable/ic_clear"
+                        app:layout_constraintBottom_toBottomOf="@+id/edtIP3"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/edtIP3" />
+
+                    <EditText
+                        android:id="@+id/edtIP3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/edittext1"
+                        android:fontFamily="@font/iran_yekan_light"
+                        android:hint="@string/ip"
+                        android:inputType="text"
+                        android:singleLine="true"
+                        android:textColor="@color/c303030"
+                        app:layout_constraintEnd_toStartOf="@+id/btnClearIP3"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtIP3" />
+
+                    <TextView
+                        android:id="@+id/txtPort3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|end"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/iran_yekan_medium"
+                        android:padding="8dp"
+                        android:text="@string/port"
+                        android:textColor="@color/c404040"
+                        android:textSize="@dimen/fourthText"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/edtIP3" />
+
+                    <EditText
+                        android:id="@+id/edtPort3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/edittext1"
+                        android:fontFamily="@font/iran_yekan_light"
+                        android:hint="@string/defaultPort"
+                        android:inputType="numberDecimal"
+                        android:singleLine="true"
+                        android:textColor="@color/c303030"
+                        app:layout_constraintEnd_toStartOf="@+id/btnClearPort3"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtPort3" />
+
+                    <ImageButton
+                        android:id="@+id/btnClearPort3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:background="@color/transparent"
+                        android:src="@drawable/ic_clear"
+                        app:layout_constraintBottom_toBottomOf="@+id/edtPort3"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtPort3" />
+
+                    <TextView
+                        android:id="@+id/txtDomainLabel3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|end"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:fontFamily="@font/iran_yekan_medium"
+                        android:padding="8dp"
+                        android:text="@string/domain"
+                        android:textColor="@color/c404040"
+                        android:textSize="@dimen/fourthText"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/edtPort3" />
+
+                    <EditText
+                        android:id="@+id/txtDomain3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/edittext1"
+                        android:enabled="false"
+                        android:fontFamily="@font/iran_yekan_regular"
+                        android:textColor="@color/c303030"
+                        android:textSize="@dimen/secondText"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtDomainLabel3" />
+
+                    <TextView
+                        android:id="@+id/txtCountryLabel3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|end"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:fontFamily="@font/iran_yekan_medium"
+                        android:padding="8dp"
+                        android:text="@string/country"
+                        android:textColor="@color/c404040"
+                        android:textSize="@dimen/fourthText"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtDomain3" />
+
+                    <EditText
+                        android:id="@+id/txtCountry3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/edittext1"
+                        android:enabled="false"
+                        android:fontFamily="@font/iran_yekan_regular"
+                        android:textColor="@color/c303030"
+                        android:textSize="@dimen/secondText"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtCountryLabel3" />
+
+                    <com.github.mikephil.charting.charts.PieChart
+                        android:id="@+id/chartIP3"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/guideline5"
+                        app:layout_constraintTop_toBottomOf="@+id/edtPort3" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.6" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.65" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -146,7 +428,7 @@
                         android:text="@string/ipAddress"
                         android:textColor="@color/c404040"
                         android:textSize="@dimen/fourthText"
-                        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/clIP1" />
 
@@ -172,7 +454,7 @@
                         android:background="@color/transparent"
                         android:src="@drawable/ic_clear"
                         app:layout_constraintBottom_toBottomOf="@+id/edtIP1"
-                        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/edtIP1" />
 
                     <TextView
@@ -186,7 +468,7 @@
                         android:text="@string/port"
                         android:textColor="@color/c404040"
                         android:textSize="@dimen/fourthText"
-                        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/edtIP1" />
 
@@ -195,14 +477,12 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="4dp"
                         android:background="@drawable/edittext1"
                         android:fontFamily="@font/iran_yekan_light"
                         android:hint="@string/defaultPort"
                         android:inputType="numberDecimal"
                         android:singleLine="true"
                         android:textColor="@color/c303030"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/btnClearPort1"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtPort1" />
@@ -214,19 +494,89 @@
                         android:background="@color/transparent"
                         android:src="@drawable/ic_clear"
                         app:layout_constraintBottom_toBottomOf="@+id/edtPort1"
-                        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtPort1" />
+
+                    <TextView
+                        android:id="@+id/txtDomainLabel1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|end"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:fontFamily="@font/iran_yekan_medium"
+                        android:padding="8dp"
+                        android:text="@string/domain"
+                        android:textColor="@color/c404040"
+                        android:textSize="@dimen/fourthText"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/edtPort1" />
+
+                    <EditText
+                        android:id="@+id/txtDomain1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/edittext1"
+                        android:enabled="false"
+                        android:fontFamily="@font/iran_yekan_regular"
+                        android:textColor="@color/c303030"
+                        android:textSize="@dimen/secondText"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtDomainLabel1" />
+
+                    <TextView
+                        android:id="@+id/txtCountryLabel1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|end"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:fontFamily="@font/iran_yekan_medium"
+                        android:padding="8dp"
+                        android:text="@string/country"
+                        android:textColor="@color/c404040"
+                        android:textSize="@dimen/fourthText"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtDomain1" />
+
+                    <EditText
+                        android:id="@+id/txtCountry1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/edittext1"
+                        android:enabled="false"
+                        android:fontFamily="@font/iran_yekan_regular"
+                        android:textColor="@color/c303030"
+                        android:textSize="@dimen/secondText"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtCountryLabel1" />
 
                     <com.github.mikephil.charting.charts.PieChart
                         android:id="@+id/chartIP1"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
                         android:layout_marginBottom="8dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/guideline2"
-                        app:layout_constraintTop_toTopOf="@+id/txtIP1" />
+                        app:layout_constraintStart_toStartOf="@+id/guideline1"
+                        app:layout_constraintTop_toBottomOf="@+id/edtPort1" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.6" />
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guideline2"
@@ -359,7 +709,7 @@
                         android:text="@string/ipAddress"
                         android:textColor="@color/c404040"
                         android:textSize="@dimen/fourthText"
-                        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/clIP2" />
 
@@ -385,7 +735,7 @@
                         android:background="@color/transparent"
                         android:src="@drawable/ic_clear"
                         app:layout_constraintBottom_toBottomOf="@+id/edtIP2"
-                        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/edtIP2" />
 
                     <TextView
@@ -399,7 +749,7 @@
                         android:text="@string/port"
                         android:textColor="@color/c404040"
                         android:textSize="@dimen/fourthText"
-                        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/edtIP2" />
 
@@ -408,14 +758,12 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="4dp"
                         android:background="@drawable/edittext1"
                         android:fontFamily="@font/iran_yekan_light"
                         android:hint="@string/defaultPort"
                         android:inputType="numberDecimal"
                         android:singleLine="true"
                         android:textColor="@color/c303030"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/btnClearPort2"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtPort2" />
@@ -427,19 +775,89 @@
                         android:background="@color/transparent"
                         android:src="@drawable/ic_clear"
                         app:layout_constraintBottom_toBottomOf="@+id/edtPort2"
-                        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtPort2" />
+
+                    <TextView
+                        android:id="@+id/txtDomainLabel2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|end"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:fontFamily="@font/iran_yekan_medium"
+                        android:padding="8dp"
+                        android:text="@string/domain"
+                        android:textColor="@color/c404040"
+                        android:textSize="@dimen/fourthText"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/edtPort2" />
+
+                    <EditText
+                        android:id="@+id/txtDomain2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/edittext1"
+                        android:enabled="false"
+                        android:fontFamily="@font/iran_yekan_regular"
+                        android:textColor="@color/c303030"
+                        android:textSize="@dimen/secondText"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtDomainLabel2" />
+
+                    <TextView
+                        android:id="@+id/txtCountryLabel2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|end"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:fontFamily="@font/iran_yekan_medium"
+                        android:padding="8dp"
+                        android:text="@string/country"
+                        android:textColor="@color/c404040"
+                        android:textSize="@dimen/fourthText"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtDomain2" />
+
+                    <EditText
+                        android:id="@+id/txtCountry2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/edittext1"
+                        android:enabled="false"
+                        android:fontFamily="@font/iran_yekan_regular"
+                        android:textColor="@color/c303030"
+                        android:textSize="@dimen/secondText"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtCountryLabel2" />
 
                     <com.github.mikephil.charting.charts.PieChart
                         android:id="@+id/chartIP2"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
                         android:layout_marginBottom="8dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/guideline4"
-                        app:layout_constraintTop_toTopOf="@+id/txtIP2" />
+                        app:layout_constraintStart_toStartOf="@+id/guideline3"
+                        app:layout_constraintTop_toBottomOf="@+id/edtPort2" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.6" />
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guideline4"
@@ -451,218 +869,6 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <!--==========================================================-->
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/card1"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
-
-                    <TextView
-                        android:id="@+id/txtTitle3"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right|end"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:fontFamily="@font/iran_yekan_regular"
-                        android:gravity="center"
-                        android:text="@string/ipAddress3"
-                        android:textColor="@color/c303030"
-                        android:textSize="@dimen/secondText"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/clPreIP3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/group3"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/txtTitle3">
-
-                        <TextView
-                            android:id="@+id/txtPreIP3Label"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="right|end"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="8dp"
-                            android:fontFamily="@font/iran_yekan_medium"
-                            android:text="@string/predefinedIpAddresses"
-                            android:textColor="@color/c404040"
-                            android:textSize="@dimen/fifthText"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <ir.techfocus.checkconnection.CustomSpinner
-                            android:id="@+id/spnPreIP3"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/spinner2"
-                            android:dropDownWidth="match_parent"
-                            android:popupBackground="@drawable/background_spn_popup"
-                            android:textColor="@color/c707070"
-                            android:textSize="@dimen/editTextSize2"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/txtPreIP3Label" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/clIP3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/group3"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/clPreIP3">
-
-                        <TextView
-                            android:id="@+id/txtIP3Label"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="right|end"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="8dp"
-                            android:fontFamily="@font/iran_yekan_medium"
-                            android:text="@string/userIpAddresses"
-                            android:textColor="@color/c404040"
-                            android:textSize="@dimen/fifthText"
-                            app:layout_constraintBottom_toTopOf="@+id/spnIP3"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <ir.techfocus.checkconnection.CustomSpinner
-                            android:id="@+id/spnIP3"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/spinner2"
-                            android:dropDownWidth="match_parent"
-                            android:popupBackground="@drawable/background_spn_popup"
-                            android:textColor="@color/c707070"
-                            android:textSize="@dimen/editTextSize2"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/txtIP3Label" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <TextView
-                        android:id="@+id/txtIP3"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right|end"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="@font/iran_yekan_medium"
-                        android:padding="8dp"
-                        android:text="@string/ipAddress"
-                        android:textColor="@color/c404040"
-                        android:textSize="@dimen/fourthText"
-                        app:layout_constraintEnd_toStartOf="@+id/guideline6"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/clIP3" />
-
-                    <ImageButton
-                        android:id="@+id/btnClearIP3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/transparent"
-                        android:src="@drawable/ic_clear"
-                        app:layout_constraintBottom_toBottomOf="@+id/edtIP3"
-                        app:layout_constraintEnd_toStartOf="@+id/guideline6"
-                        app:layout_constraintTop_toTopOf="@+id/edtIP3" />
-
-                    <EditText
-                        android:id="@+id/edtIP3"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:background="@drawable/edittext1"
-                        android:fontFamily="@font/iran_yekan_light"
-                        android:hint="@string/ip"
-                        android:inputType="text"
-                        android:singleLine="true"
-                        android:textColor="@color/c303030"
-                        app:layout_constraintEnd_toStartOf="@+id/btnClearIP3"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/txtIP3" />
-
-                    <TextView
-                        android:id="@+id/txtPort3"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right|end"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="@font/iran_yekan_medium"
-                        android:padding="8dp"
-                        android:text="@string/port"
-                        android:textColor="@color/c404040"
-                        android:textSize="@dimen/fourthText"
-                        app:layout_constraintEnd_toStartOf="@+id/guideline6"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/edtIP3" />
-
-                    <EditText
-                        android:id="@+id/edtPort3"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="4dp"
-                        android:background="@drawable/edittext1"
-                        android:fontFamily="@font/iran_yekan_light"
-                        android:hint="@string/defaultPort"
-                        android:inputType="numberDecimal"
-                        android:singleLine="true"
-                        android:textColor="@color/c303030"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/btnClearPort3"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/txtPort3" />
-
-                    <ImageButton
-                        android:id="@+id/btnClearPort3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/transparent"
-                        android:src="@drawable/ic_clear"
-                        app:layout_constraintBottom_toBottomOf="@+id/edtPort3"
-                        app:layout_constraintEnd_toStartOf="@+id/guideline6"
-                        app:layout_constraintTop_toBottomOf="@+id/txtPort3" />
-
-                    <com.github.mikephil.charting.charts.PieChart
-                        android:id="@+id/chartIP3"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginBottom="8dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/guideline6"
-                        app:layout_constraintTop_toTopOf="@+id/txtIP3" />
-
-                    <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/guideline6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.65" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <!--==========================================================-->
 
