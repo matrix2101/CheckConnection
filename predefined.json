@@ -31,7 +31,7 @@
     },
 
     {
-      "name": "ChatGPT",
+      "name": "ChatGPT1",
       "ipAddresses": [
         {
           "ipAddress": "android.chat.openai.com",
@@ -41,7 +41,7 @@
     },
 
     {
-      "name": "ChatGPT",
+      "name": "ChatGPT2",
       "ipAddresses": [
         {
           "ipAddress": "ws.chatgpt.com",
@@ -51,4 +51,5 @@
     }
   ]
 }
+
 
