@@ -524,6 +524,7 @@
                         android:textColor="@color/c303030"
                         android:textSize="@dimen/secondText"
                         app:layout_constraintEnd_toStartOf="@+id/guideline1"
+                        app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtDomainLabel1" />
 

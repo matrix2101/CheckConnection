@@ -8,9 +8,5 @@ class AddressTest(
     val shouldBeTested: Boolean,
     var reachable: Boolean,
     var testFailed: Long,
-    var testSuccess: Long,
-    var ip: String?,
-    var domain: String?,
-    var countryCode: String?,
-    var country: String?
+    var testSuccess: Long
 ) : Serializable

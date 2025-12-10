@@ -170,6 +170,7 @@ class ConnectivityMonitorService : Service() {
 
         } catch (e: IOException) {
             false
+            
         } catch (e: Exception) {
             false
         }

@@ -45,8 +45,8 @@ class OverlayService : Service() {
 
     private lateinit var localBroadcastManager: LocalBroadcastManager
 
-    private var textBoxOverlayX: Int = 0
-    private var textBoxOverlayY: Int = 0
+    private var textBoxOverlayX: Int = 125
+    private var textBoxOverlayY: Int = 125
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate() {
@@ -61,8 +61,8 @@ class OverlayService : Service() {
 
         windowManager = getSystemService(WINDOW_SERVICE) as WindowManager
 
-        textBoxOverlayX = Utils().getSettings(applicationContext, Constants.OVERLAY_X_KEY, "").toInt()
-        textBoxOverlayY = Utils().getSettings(applicationContext, Constants.OVERLAY_Y_KEY, "").toInt()
+        textBoxOverlayX = Utils().getSettings(applicationContext, Constants.OVERLAY_X_KEY, "125").toInt()
+        textBoxOverlayY = Utils().getSettings(applicationContext, Constants.OVERLAY_Y_KEY, "125").toInt()
 
         //overlayView1 =========================================================================
 
@@ -70,7 +70,7 @@ class OverlayService : Service() {
         linearLayout1 = initLinearLayout()
 
         textView1 = initTextView()
-        textView1.text = "IP1"
+        textView1.text = resources.getString(R.string.ip1)
 
         imageView1 = ImageView(this)
         imageView1.setImageResource(R.drawable.icon_exclamation) // default
@@ -96,7 +96,7 @@ class OverlayService : Service() {
         linearLayout2 = initLinearLayout()
 
         textView2 = initTextView()
-        textView2.text = "IP2"
+        textView2.text = resources.getString(R.string.ip2)
 
         imageView2 = ImageView(this)
         imageView2.setImageResource(R.drawable.icon_exclamation) // default
@@ -122,7 +122,7 @@ class OverlayService : Service() {
         linearLayout3 = initLinearLayout()
 
         textView3 = initTextView()
-        textView3.text = "IP3"
+        textView3.text = resources.getString(R.string.ip3)
 
         imageView3 = ImageView(this)
         imageView3.setImageResource(R.drawable.icon_exclamation) // default
@@ -239,7 +239,7 @@ class OverlayService : Service() {
     fun initCardView(): CardView {
         return CardView(this).apply {
             radius = 16f
-            setCardBackgroundColor("#EEFFFFFF".toColorInt()) // semi-transparent black
+            setCardBackgroundColor("#EEFFFFFF".toColorInt())
             cardElevation = 8f
             layoutParams = ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,

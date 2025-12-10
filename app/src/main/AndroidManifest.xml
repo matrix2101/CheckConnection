@@ -45,6 +45,7 @@
             android:name=".OverlayService"
             android:exported="false"
             android:foregroundServiceType="shortService" />
+
     </application>
 
 </manifest>

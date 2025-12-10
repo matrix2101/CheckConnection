@@ -42,7 +42,6 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.net.InetAddress
-import kotlin.collections.plus
 
 
 class MainActivity : BaseActivity() {
@@ -231,15 +230,6 @@ class MainActivity : BaseActivity() {
                 setData(binding.chartIP1, addressTestArray[0])
                 setData(binding.chartIP2, addressTestArray[1])
                 setData(binding.chartIP3, addressTestArray[2])
-
-                binding.txtDomain1.setText(addressTestArray[0].domain)
-                binding.txtCountry1.setText(addressTestArray[0].country)
-
-                binding.txtDomain2.setText(addressTestArray[1].domain)
-                binding.txtCountry2.setText(addressTestArray[1].country)
-
-                binding.txtDomain3.setText(addressTestArray[2].domain)
-                binding.txtCountry3.setText(addressTestArray[2].country)
             }
         }
     }
@@ -372,16 +362,6 @@ class MainActivity : BaseActivity() {
 
                 } else {
                     lifecycleScope.launch {
-                        var addressTestArray = emptyArray<AddressTest>()
-
-                        var delay: Long = Constants.DEFAULT_DELAY
-                        if (Utils().validateLongInput(binding.edtDelay)) {
-                            delay = binding.edtDelay.text.toString().toLong()
-                        }
-                        val timeOut = Constants.DEFAULT_TIMEOUT
-
-                        //================================================================
-
                         var ipOrDomains = emptyArray<String>()
                         ipOrDomains += binding.edtIP1.text.toString()
                         ipOrDomains += binding.edtIP2.text.toString()
@@ -404,13 +384,63 @@ class MainActivity : BaseActivity() {
                             }
                         }
 
-                        var ipInfoArray = emptyArray<IPInfoLite>()
+                        if (ips[0] != "") {
+                            val ipInfoLite: IPInfoLite? = initIPInfoLite(ips[0])
+                            if (ipInfoLite != null && ipInfoLite.asDomain != null) {
+                                binding.txtDomain1.setText(ipInfoLite.asDomain)
+                                binding.txtCountry1.setText(ipInfoLite.country)
 
-                        ipInfoArray += initIPInfoLite(ips[0])
-                        ipInfoArray += initIPInfoLite(ips[1])
-                        ipInfoArray += initIPInfoLite(ips[2])
+                            } else {
+                                binding.txtDomain1.setText("???")
+                                binding.txtCountry1.setText("???")
+                            }
 
-                        //================================================================
+                        } else {
+                            binding.txtDomain1.setText("???")
+                            binding.txtCountry1.setText("???")
+                        }
+
+                        if (ips[1] != "") {
+                            val ipInfoLite: IPInfoLite? = initIPInfoLite(ips[1])
+                            if (ipInfoLite != null && ipInfoLite.asDomain != null) {
+                                binding.txtDomain2.setText(ipInfoLite.asDomain)
+                                binding.txtCountry2.setText(ipInfoLite.country)
+
+                            } else {
+                                binding.txtDomain2.setText("???")
+                                binding.txtCountry2.setText("???")
+                            }
+
+                        } else {
+                            binding.txtDomain2.setText("???")
+                            binding.txtCountry2.setText("???")
+                        }
+
+                        if (ips[2] != "") {
+                            val ipInfoLite: IPInfoLite? = initIPInfoLite(ips[2])
+                            if (ipInfoLite != null && ipInfoLite.asDomain != null) {
+                                binding.txtDomain3.setText(ipInfoLite.asDomain)
+                                binding.txtCountry3.setText(ipInfoLite.country)
+
+                            } else {
+                                binding.txtDomain3.setText("???")
+                                binding.txtCountry3.setText("???")
+                            }
+
+                        } else {
+                            binding.txtDomain3.setText("???")
+                            binding.txtCountry3.setText("???")
+                        }
+                    }
+
+                    lifecycleScope.launch {
+                        var addressTestArray = emptyArray<AddressTest>()
+
+                        var delay: Long = Constants.DEFAULT_DELAY
+                        if (Utils().validateLongInput(binding.edtDelay)) {
+                            delay = binding.edtDelay.text.toString().toLong()
+                        }
+                        val timeOut = Constants.DEFAULT_TIMEOUT
 
                         if (Utils().validation(binding.edtIP1, binding.edtPort1) && Utils().validateIntInput(binding.edtPort1)) {
                             val addressTest1 = AddressTest(
@@ -419,11 +449,7 @@ class MainActivity : BaseActivity() {
                                 true,
                                 false,
                                 0,
-                                0,
-                                ipInfoArray[0].ip,
-                                ipInfoArray[0].asDomain,
-                                ipInfoArray[0].countryCode,
-                                ipInfoArray[0].country
+                                0
                             )
                             addressTestArray += addressTest1
                             lifecycleScope.launch {
@@ -436,11 +462,7 @@ class MainActivity : BaseActivity() {
                                 false,
                                 false,
                                 0,
-                                0,
-                                "",
-                                "",
-                                "",
-                                ""
+                                0
                             )
                             addressTestArray += addressTest
                         }
@@ -454,11 +476,7 @@ class MainActivity : BaseActivity() {
                                 true,
                                 false,
                                 0,
-                                0,
-                                ipInfoArray[1].ip,
-                                ipInfoArray[1].asDomain,
-                                ipInfoArray[1].countryCode,
-                                ipInfoArray[1].country
+                                0
                             )
                             addressTestArray += addressTest2
                             lifecycleScope.launch {
@@ -471,11 +489,7 @@ class MainActivity : BaseActivity() {
                                 false,
                                 false,
                                 0,
-                                0,
-                                "",
-                                "",
-                                "",
-                                ""
+                                0
                             )
                             addressTestArray += addressTest
                         }
@@ -489,11 +503,7 @@ class MainActivity : BaseActivity() {
                                 true,
                                 false,
                                 0,
-                                0,
-                                ipInfoArray[2].ip,
-                                ipInfoArray[2].asDomain,
-                                ipInfoArray[2].countryCode,
-                                ipInfoArray[2].country
+                                0
                             )
                             addressTestArray += addressTest3
                             lifecycleScope.launch {
@@ -506,11 +516,7 @@ class MainActivity : BaseActivity() {
                                 false,
                                 false,
                                 0,
-                                0,
-                                "",
-                                "",
-                                "",
-                                ""
+                                0
                             )
                             addressTestArray += addressTest
                         }
@@ -563,18 +569,19 @@ class MainActivity : BaseActivity() {
 
     //==============================================================================================
 
-    suspend fun initIPInfoLite(ip: String): IPInfoLite{
+    suspend fun initIPInfoLite(ip: String): IPInfoLite? {
         try {
-            val ipInfo1: IPInfoLite? = ApiClient.apiInterface.getIPInfo("https://api.ipinfo.io/lite/" + ip + "?token=" + Constants.IP_INFO_TOKEN)
-            if (ipInfo1 != null){
+            val ipInfo1: IPInfoLite? =
+                ApiClient.apiInterface.getIPInfo("https://api.ipinfo.io/lite/" + ip + "?token=" + Constants.IP_INFO_TOKEN)
+            if (ipInfo1 != null) {
                 return ipInfo1
 
-            } else{
-                return IPInfoLite("", "", "", "", "", "", "", "")
+            } else {
+                return null
             }
 
         } catch (e: Exception) {
-            return IPInfoLite("", "", "", "", "", "", "", "")
+            return null
         }
     }
 

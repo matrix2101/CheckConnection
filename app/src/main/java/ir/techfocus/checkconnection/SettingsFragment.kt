@@ -125,8 +125,7 @@ class SettingsFragment(private val myContext: Context) : Fragment() {
                     overlayTopLeft -> {
                         Utils().saveSettings(myContext, Constants.OVERLAY_X_KEY, (getScreenWidthByPercentage(Constants.OVERLAY_PERCENTAGE_X_START)).toString())
                         Utils().saveSettings(myContext, Constants.OVERLAY_Y_KEY, (getScreenHeightByPercentage(Constants.OVERLAY_PERCENTAGE_Y_START)).toString())
-                        sendOverlayUpdate(
-                            Constants.OVERLAY_TOP_LEFT_KEY,
+                        sendOverlayUpdate(Constants.OVERLAY_TOP_LEFT_KEY,
                             getScreenWidthByPercentage(Constants.OVERLAY_PERCENTAGE_X_START),
                             getScreenHeightByPercentage(Constants.OVERLAY_PERCENTAGE_Y_START)
                         )

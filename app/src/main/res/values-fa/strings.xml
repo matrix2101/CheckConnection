@@ -36,6 +36,9 @@
     <string name="testboxOverlay">مکان جعبه های تست</string>
     <string name="domain">دامنه</string>
     <string name="country">کشور</string>
+    <string name="ip1">IP1</string>
+    <string name="ip2">IP2</string>
+    <string name="ip3">IP3</string>
 
     <string-array name="language_array">
         <item name="Farsi"> فارسی</item>

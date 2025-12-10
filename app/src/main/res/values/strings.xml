@@ -36,6 +36,9 @@
     <string name="testboxOverlay">Testboxes Overlay</string>
     <string name="domain">Domain</string>
     <string name="country">Country</string>
+    <string name="ip1">IP1</string>
+    <string name="ip2">IP2</string>
+    <string name="ip3">IP3</string>
 
     <string-array name="language_array">
         <item name="Farsi"> فارسی</item>
